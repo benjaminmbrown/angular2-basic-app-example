@@ -1,2 +1,3 @@
-# angular2-basic-app-example
-Basic angular 2 app
+#Angular 2 Application
+
+Using yarn, webpack, typescript, and angular 2
