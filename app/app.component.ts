@@ -7,16 +7,18 @@ import { Component } from '@angular/core';
   <div class="app">
    <h1 [innerHTML]="title+ '!'"></h1>
    <div>
-   <button (click) = "handleClick()">Revert Name</button>
+   <button (click) = "handleClick(username.value)" >Get username Val</button>
     <input 
       type="text" 
-      [value]="name"
-      (input)="handleInput($event)"
-      (blur)="handleBlur($event)"
-    ></div>
-    <img [src]="logo"/>
-   
-    {{name}}
+      [value] = "name"
+      #username
+      (input) = "handleChange($event.target.value)"
+    >
+    </div>
+    
+    <div *ngIf="name.length > 2">
+      Searching for ...{{name}}
+    </div>
   </div> 
   ` 
 })
@@ -38,8 +40,12 @@ export class AppComponent {
     this.name = event.target.value;
     console.log(event);
   }
-  handleClick(){
-    this.name="Ben Again";
+  handleClick(value:string){
+  console.log(value);
+  }
+
+  handleChange(value:string){
+    this.name=value;
   }
 
 }
