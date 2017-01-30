@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 //virtual object to describe users ("schema")
+interface Child {
+  name: string,
+  age: number
+}
 interface User {
   id:number,
   name: string,
   checkedIn:boolean,
-  checkedInDate? : number
+  checkedInDate? : number,
+  children?: Child[]
 }
+
 
 
 @Component({
@@ -41,10 +47,13 @@ interface User {
            Check in date:
            {{user.checkedInDate ? (user.checkedInDate | date: 'yMMMMd' | uppercase): 'Not checked in'}}
            </div>
+           <div class="children">
+           Children: {{ user.children?.length || 0}}
+           </div>
           </li>
         </ul>
     </div>
-
+<!--
       <div>
         <h3>Users</h3>
         <ul>using ng-class [ngClass] = 
@@ -81,7 +90,7 @@ interface User {
            {{user.name}} - {{user.checkedIn}}
           </li>
         </ul>
-    </div>
+    </div>-->
 
   </div> 
   ` 
@@ -97,12 +106,14 @@ export class AppComponent {
     id:1,
     name: "Ben",
     checkedIn: true,
-    checkedInDate: 1485740653000
+    checkedInDate: 1485740653000,
+    children:[{name:"Ben Jr.", age:12 }, {name:"Benita", age:9}]
   },{
     id:2,
     name: "Becca",
     checkedIn: true,
-    checkedInDate: 1485049453000
+    checkedInDate: 1485049453000,
+    children: null
   },{
     id:3,
     name: "Kaiser",
