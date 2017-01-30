@@ -14,28 +14,38 @@ interface User {
   <div class="app">
    <h1 [innerHTML]="title+ '!'"></h1>
    <div>
-   
-   <button (click) = "handleClick(username.value)" >Get username Val</button>
-   <br/>
-    <input 
-      type="text" 
-      [value] = "name"
-      #username
-      (input) = "handleChange($event.target.value)"
-    >
-    </div>
+    <button (click) = "handleClick(username.value)" >Get username Val</button>
+    <br/>
+      <input 
+        type="text" 
+        [value] = "name"
+        #username
+        (input) = "handleChange($event.target.value)"
+      >
+
     
     <div *ngIf="name.length > 2">
       Searching for ...{{name}}
     </div>
 
-
     <div>
         <h3>Users</h3>
         <ul>
-          <li *ngFor="let user of users; let i = index;">{{i}}: {{user.name}} - {{user.checkedIn}}</li>
+          <li *ngFor="let user of users; let i = index;">
+          <span class="status" [class.checked-in] = "user.checkedIn"></span>
+           {{user.name}} - {{user.checkedIn}}
+          </li>
         </ul>
-        
+    </div>
+
+      <div>
+        <h3>Users</h3>
+        <ul>using ng-class
+          <li *ngFor="let user of users; let i = index;">
+          <span class="status" [ngClass] = "{'checked-in': user.checkedIn,'checked-out':user.checkedIn}"></span>
+           {{user.name}} - {{user.checkedIn}}
+          </li>
+        </ul>
     </div>
 
   </div> 
