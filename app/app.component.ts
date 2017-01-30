@@ -30,7 +30,9 @@ interface User {
 
     <div>
         <h3>Users</h3>
+        
         <ul>
+        using [class.checked-in] = 
           <li *ngFor="let user of users; let i = index;">
           <span class="status" [class.checked-in] = "user.checkedIn"></span>
            {{user.name}} - {{user.checkedIn}}
@@ -40,9 +42,37 @@ interface User {
 
       <div>
         <h3>Users</h3>
-        <ul>using ng-class
+        <ul>using ng-class [ngClass] = 
           <li *ngFor="let user of users; let i = index;">
           <span class="status" [ngClass] = "{'checked-in': user.checkedIn,'checked-out':user.checkedIn}"></span>
+           {{user.name}} - {{user.checkedIn}}
+          </li>
+        </ul>
+    </div>
+
+
+      <div>
+        <h3>Users</h3>
+        <ul>using style binding ([style.backgroundColor])
+          <li *ngFor="let user of users; let i = index;">
+          <span class="status" 
+          [style.backgroundColor] = "(user.checkedIn?'#2ecc71':'#c0392b')">
+          </span>
+           {{user.name}} - {{user.checkedIn}}
+          </li>
+        </ul>
+    </div>
+
+
+      <div>
+        <h3>Users</h3>
+        <ul>using  [ngStyle] = 
+          <li *ngFor="let user of users; let i = index;">
+          <span class="status" 
+          [ngStyle] = "{
+            backgroundColor:(user.checkedIn?'#2ecc71':'#c0392b')
+            }">
+          </span>
            {{user.name}} - {{user.checkedIn}}
           </li>
         </ul>
