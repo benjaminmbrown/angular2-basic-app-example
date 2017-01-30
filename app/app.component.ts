@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 interface User {
   id:number,
   name: string,
-  checkedIn:boolean
+  checkedIn:boolean,
+  checkedInDate? : number
 }
 
 
@@ -35,7 +36,11 @@ interface User {
         using [class.checked-in] = 
           <li *ngFor="let user of users; let i = index;">
           <span class="status" [class.checked-in] = "user.checkedIn"></span>
-           {{user.name}} - {{user.checkedIn}}
+           {{user.name}} 
+           <div class="date">
+           Check in date:
+           {{user.checkedInDate ? (user.checkedInDate | date: 'yMMMMd' | uppercase): 'Not checked in'}}
+           </div>
           </li>
         </ul>
     </div>
@@ -91,11 +96,13 @@ export class AppComponent {
   users: User[] = [{
     id:1,
     name: "Ben",
-    checkedIn: true
+    checkedIn: true,
+    checkedInDate: 1485740653000
   },{
     id:2,
     name: "Becca",
-    checkedIn: true
+    checkedIn: true,
+    checkedInDate: 1485049453000
   },{
     id:3,
     name: "Kaiser",
