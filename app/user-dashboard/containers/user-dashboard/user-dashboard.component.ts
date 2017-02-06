@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user.interface';
+
 
 @Component({
     selector: 'user-dashboard',
@@ -39,13 +40,19 @@ import {User} from '../../models/user.interface';
     `
 })
 
-export class UserDashboardComponent{
+export class UserDashboardComponent implements OnInit {
 
   title:string;
   logo:string = 'img/bike.jpg';
   name:string = 'Ben';
 
-  users: User[] = [{
+  users: User[];
+  
+  constructor(){this.title = "Basic Angular App";}
+  
+  ngOnInit(){
+    console.log("ngOnInit");
+    this.users =  [{
     id:1,
     name: "Ben",
     checkedIn: true,
@@ -68,9 +75,9 @@ export class UserDashboardComponent{
     checkedIn: false
   }];
 
-  constructor(){
-    this.title = "Basic Angular App";
-  }
+  console.log("Users: ", this.users);
+
+}
 
   handleBlur(event:any){
     this.name = event.target.value;
