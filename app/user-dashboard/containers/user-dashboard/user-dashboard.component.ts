@@ -7,7 +7,13 @@ import {User} from '../../models/user.interface';
     styleUrls: ['user-dashboard.component.scss'],
     template: `
    <div>
-   <h1 [innerHTML]="title+ '!'"></h1>
+ 
+   <user-detail>
+   </user-detail>
+     
+    <user-count
+    [items]='users'>
+   </user-count>
    <div>
     <button (click) = "handleClick(username.value)" >Get username Val</button>
     <br/>
