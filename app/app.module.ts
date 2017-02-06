@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {AppComponent} from './app.component';
+import {UserDashboardModule} from './user-dashboard/user-dashboard-module';
 
 @NgModule({
   declarations:[
@@ -9,7 +10,9 @@ import {AppComponent} from './app.component';
     ],
     imports:[
       BrowserModule,
-      CommonModule
+      CommonModule,
+      //Custom modules
+      UserDashboardModule
     ],
   bootstrap:[
     AppComponent
